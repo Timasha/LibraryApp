@@ -3,5 +3,5 @@
 public class BasicRoles
 {
     public static readonly Role AdminRole = new Role("admin");
-    public static readonly Role SimplyUserRole = new Role("user");
+    public static readonly Role SimpleUserRole = new Role("user");
 }

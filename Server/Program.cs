@@ -12,6 +12,7 @@ ConsoleLogger logger = new ConsoleLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 builder.Services.AddSingleton<ILogger, ConsoleLogger>();
 builder.Services.AddSingleton<IUserStorage, GlobalStorage>();
 builder.Services.AddSingleton<IBookStorage, GlobalStorage>();
@@ -23,7 +24,13 @@ builder.Services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;}).AddCookie();
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("anyRole",
+        policy => policy.RequireRole("admin","user"));
+    options.AddPolicy("admin",
+        policy => policy.RequireRole("admin"));
+});
 
 
 builder.Services.AddControllers();

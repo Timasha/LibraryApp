@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Server.Logic.Books;
@@ -16,8 +17,8 @@ public class BookManagingController : Controller
         _booksLogic = booksLogic;
     }
 
-    [Route("/createBook")]
-    [Authorize(Roles = "admin")]
+    [Route("/book/create")]
+    [Authorize(Policy = "admin")]
     [HttpPost]
     public IActionResult CreateBook([FromForm] string name, [FromForm] string description, [FromForm] UInt64 allNum)
     {
@@ -25,8 +26,8 @@ public class BookManagingController : Controller
         return Json(response);
     }
 
-    [Route("/getAllBooks")]
-    [Authorize(Roles="admin, user")]
+    [Route("/books/get")]
+    [Authorize(Policy = "anyRole",AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     [HttpPost]
     public IActionResult GetAllBooks()
     {
@@ -34,8 +35,8 @@ public class BookManagingController : Controller
         return Json(response);
     }
 
-    [Route("/addExistedBook")]
-    [Authorize(Roles="admin")]
+    [Route("/book/add")]
+    [Authorize(Policy = "admin")]
     [HttpPost]
     public IActionResult AddExistedBook([FromQuery] UInt64 bookId, [FromForm] int num)
     {
@@ -43,8 +44,8 @@ public class BookManagingController : Controller
         return Json(response);
     }
     
-    [Route("/reserveBook")]
-    [Authorize(Roles="admin, user")]
+    [Route("/book/reserve")]
+    [Authorize(Policy = "anyRole")]
     [HttpPost]
     public IActionResult ReserveBook([FromQuery] UInt64 bookId)
     {
@@ -53,6 +54,7 @@ public class BookManagingController : Controller
         {
             if (claim.Type == ClaimsIdentity.DefaultNameClaimType)
             {
+                login = claim.Value;
                 break;
             }
         }

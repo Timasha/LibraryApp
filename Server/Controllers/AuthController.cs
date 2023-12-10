@@ -17,7 +17,7 @@ public class AuthController : Controller
         _authLogic = authLogic;
     }
     
-    [Route("/authenticate")]
+    [Route("/user/authenticate")]
     [HttpPost]
     public IActionResult Authenticate([FromForm] string login, [FromForm] string password)
     {
@@ -53,12 +53,12 @@ public class AuthController : Controller
     {
         var response = _authLogic.RegisterSimpleUser(new User(login, password));
 
-        
-        
-        return Json(response);
+
+
+        return Json(response);  
     }
 
-    [Authorize(Roles="admin")]
+    [Authorize(Policy = "admin")]
     [Route("/register/admin")]
     [HttpPost]
     public IActionResult RegisterAdminUser([FromForm] string login, [FromForm] string password)

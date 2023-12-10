@@ -23,7 +23,8 @@ public class AuthLogicProvider
     public AuthLogicAuthenticateResponse Authenticate(string login, string password)
     {
         UserStorageGetUserByLoginResponse response = _userStorage.GetUserByLogin(login);
-        _logger.Log(LogLevel.Info,$"Get user by login while authenticate status: {response.StatusCode.GetType()}");
+        
+        _logger.Log(LogLevel.Info,$"Get user {login} by login while authenticate status: {UserStorageStatusFabric.Status(response.StatusCode)}");
         
         switch (response.StatusCode)
         {
@@ -48,10 +49,10 @@ public class AuthLogicProvider
 
     public AuthLogicRegisterSimpleUserResponse RegisterSimpleUser(User user)
     {
-        user.Role = BasicRoles.SimplyUserRole;
+        user.Role = BasicRoles.SimpleUserRole;
         UserStorageCreateUserResponse response = _userStorage.CreateUser(user);
         
-        _logger.Log(LogLevel.Info,$"Create user while register simple user status: {response.StatusCode.GetType()}");
+        _logger.Log(LogLevel.Info,$"Create user while register simple user status: {UserStorageStatusFabric.Status(response.StatusCode)}");
         
         switch (response.StatusCode)
         {
@@ -73,7 +74,7 @@ public class AuthLogicProvider
         user.Role = BasicRoles.AdminRole;
         UserStorageCreateUserResponse response = _userStorage.CreateUser(user);
         
-        _logger.Log(LogLevel.Info,$"Create user while register admin user status: {response.StatusCode.GetType()}");
+        _logger.Log(LogLevel.Info,$"Create user while register admin user status: {UserStorageStatusFabric.Status(response.StatusCode)}");
 
         switch (response.StatusCode)
         {
