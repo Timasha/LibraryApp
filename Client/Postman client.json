@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "1296ae77-67e3-43f4-98aa-92463b383a5b",
+		"name": "TestServer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31409787"
+	},
+	"item": [
+		{
+			"name": "RegisterUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "timofey",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "nbvfif132",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5013/register/user",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"register",
+						"user"
+					],
+					"query": [
+						{
+							"key": "login",
+							"value": "timofey",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "nbvfif132",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "root",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "rootPassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": "localhost:5013/user/authenticate"
+			},
+			"response": []
+		},
+		{
+			"name": "Register admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": ".AspNetCore.Cookies=CfDJ8PRpivFzZt1CgYKducVDL1conia5e-rcmHxWJKUKrryUDjLZTxeBDvaW62oQf6Y90UMD7lfZQf--Ui2mA8hoiYwjtE4wOi7g3zBp6K7moTzCH9t_jKxB0I1-72_TWsm28PQ91LsxLXZLaobPQZ0FB14ZW9KyLpY2CpDjQiTinFyfJMEy4tT5EFkXsvLtaRAdvB686gQ7xMKgXFlZIHSzPee3_wScjm2SScHYnUBH5wCn323RtFzbcn8SlUi-jjTL9dkIaAqx7VkpaJnKiLLW5NOkg33TEEjreuopKqkKZ-tLLEZTK6t5dNU-ptt4flc9UBHp7OwXGsXaLgg_P3VgQIZEkz1FtYsTUt7nXqGEBNaBpziwWuFEpQKnfR60GhnF6cxSv16cQQ1ceoYLATA_L4g; path=/; samesite=lax; httponly",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "timofeyAdmin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "nbvfif132",
+							"type": "text"
+						}
+					]
+				},
+				"url": "localhost:5013/register/admin"
+			},
+			"response": []
+		},
+		{
+			"name": "Create book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": ".AspNetCore.Cookies=CfDJ8PRpivFzZt1CgYKducVDL1cuDZLZCBZs_uYonSE8WI4W02uJUcHshrJtbEjTFcIDR-Rc1UgXgvNJ-65GCPX0G22nuA60Ct2zw31zPCTTwttIUHulexxqnV1DujQ9K6sxvxL70cMyIjsPITbfG71SNYp5IGMIVWeZ_6fYUEgxwEQyB0N20Int2mJaM7aMOqJzAefvheACri24PXVBeCx-FeCWDWkFDTjIpVROm5eZ7W9Hu_9TVX3n71rdLKlgS6P9yl9KB3JI3e_bDeuddnxxncxTTYktlIl2-a7XM-YvkF02yCBm11YHizJ3MzW69drnOyEuGM_8P4sCoE4SX_p9S3BNHvxKXodRCpjetiAkSRadbGSeiOKuyaM4AC1dBTz-zd_W9TDjr5VeHjUSA4K2Ucc; path=/; samesite=lax; httponly",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "War and peace1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "some book",
+							"type": "text"
+						},
+						{
+							"key": "allNum",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5013/book/create",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"book",
+						"create"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all books",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": ".AspNetCore.Cookies=CfDJ8PRpivFzZt1CgYKducVDL1cuDZLZCBZs_uYonSE8WI4W02uJUcHshrJtbEjTFcIDR-Rc1UgXgvNJ-65GCPX0G22nuA60Ct2zw31zPCTTwttIUHulexxqnV1DujQ9K6sxvxL70cMyIjsPITbfG71SNYp5IGMIVWeZ_6fYUEgxwEQyB0N20Int2mJaM7aMOqJzAefvheACri24PXVBeCx-FeCWDWkFDTjIpVROm5eZ7W9Hu_9TVX3n71rdLKlgS6P9yl9KB3JI3e_bDeuddnxxncxTTYktlIl2-a7XM-YvkF02yCBm11YHizJ3MzW69drnOyEuGM_8P4sCoE4SX_p9S3BNHvxKXodRCpjetiAkSRadbGSeiOKuyaM4AC1dBTz-zd_W9TDjr5VeHjUSA4K2Ucc; path=/; samesite=lax; httponly",
+						"type": "text"
+					}
+				],
+				"url": "localhost:5013/books/get"
+			},
+			"response": []
+		},
+		{
+			"name": "Reserve book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": ".AspNetCore.Cookies=CfDJ8PRpivFzZt1CgYKducVDL1cuDZLZCBZs_uYonSE8WI4W02uJUcHshrJtbEjTFcIDR-Rc1UgXgvNJ-65GCPX0G22nuA60Ct2zw31zPCTTwttIUHulexxqnV1DujQ9K6sxvxL70cMyIjsPITbfG71SNYp5IGMIVWeZ_6fYUEgxwEQyB0N20Int2mJaM7aMOqJzAefvheACri24PXVBeCx-FeCWDWkFDTjIpVROm5eZ7W9Hu_9TVX3n71rdLKlgS6P9yl9KB3JI3e_bDeuddnxxncxTTYktlIl2-a7XM-YvkF02yCBm11YHizJ3MzW69drnOyEuGM_8P4sCoE4SX_p9S3BNHvxKXodRCpjetiAkSRadbGSeiOKuyaM4AC1dBTz-zd_W9TDjr5VeHjUSA4K2Ucc; path=/; samesite=lax; httponly",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5013/book/reserve?bookId=1",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"book",
+						"reserve"
+					],
+					"query": [
+						{
+							"key": "bookId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
